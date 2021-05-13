@@ -11,7 +11,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="67dp"
         android:fontFamily="@font/arimo_bold"
-        android:text="ALBUM"
+        android:text="ALBUM HOT"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:layout_width="wrap_content"

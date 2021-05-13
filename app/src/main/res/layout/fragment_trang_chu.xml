@@ -19,6 +19,8 @@
             android:layout_height="wrap_content">
         </fragment>
 
+
+
         <fragment
             android:id="@+id/fragmentplaylist"
             android:name='com.example.music_app.fragment.fragment_playlist'
@@ -29,6 +31,13 @@
         <fragment
             android:id="@+id/fragmentalbum"
             android:name='com.example.music_app.fragment.fragment_album'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </fragment>
+
+        <fragment
+            android:id="@+id/fragmentbaihathot"
+            android:name='com.example.music_app.fragment.fragment_baihat_hot'
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </fragment>

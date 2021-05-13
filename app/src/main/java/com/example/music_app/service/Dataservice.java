@@ -1,8 +1,11 @@
 package com.example.music_app.service;
 
 import com.example.music_app.model.Album;
+import com.example.music_app.model.Baihat;
+import com.example.music_app.model.Chude;
 import com.example.music_app.model.Playlist;
 import com.example.music_app.model.Quangcao;
+import com.example.music_app.model.TheLoaiTrongNgay;
 
 import java.util.List;
 
@@ -19,4 +22,13 @@ public interface Dataservice {
 
     @GET("danhsachalbum.php")
     Call<List<Album>> GetAlbum();
+
+    @GET("chudevatheloaitrongngay.php")
+    Call<TheLoaiTrongNgay> getCategoryMusic();
+
+    @GET("tatcachude.php")
+    Call<List<Chude>> getchude();
+
+    @GET("baihatduocthich.php")
+    Call<List<Baihat>> getbaihatyeuthich();
 }
