@@ -59,6 +59,9 @@ public class BannerAdapter extends PagerAdapter {
         txtTitleSongBanner.setText(arrayListBanner.get(position).getTenBaiHat());
         txtNoiDung.setText(arrayListBanner.get(position).getNoidung());
 
+
+        
+
         container.addView(view);
         return view;
 

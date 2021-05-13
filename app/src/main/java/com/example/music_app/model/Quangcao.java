@@ -4,8 +4,10 @@ package com.example.music_app.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 //@Generated("jsonschema2pojo")
-public class Quangcao {
+public class Quangcao implements Serializable {
 
 @SerializedName("IdQuangcao")
 @Expose
