@@ -1,5 +1,6 @@
 package com.example.music_app.service;
 
+import com.example.music_app.model.Album;
 import com.example.music_app.model.Playlist;
 import com.example.music_app.model.Quangcao;
 
@@ -15,4 +16,7 @@ public interface Dataservice {
 
     @GET("playlistofcurrenrday.php")
     Call<List<Playlist>> GetPlaylistCurrentDay();
+
+    @GET("danhsachalbum.php")
+    Call<List<Album>> GetAlbum();
 }

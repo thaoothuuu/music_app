@@ -7,11 +7,11 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txtplaylist"
+        android:id="@+id/txtalbum"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="67dp"
         android:fontFamily="@font/arimo_bold"
-        android:text="PLAYLIST"
+        android:text="ALBUM"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:layout_width="wrap_content"
@@ -19,12 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerviewplaylist"
+        android:id="@+id/recyclerviewalbum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtplaylist" />
+        app:layout_constraintTop_toBottomOf="@+id/txtalbum" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

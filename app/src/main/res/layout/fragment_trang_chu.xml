@@ -26,6 +26,13 @@
             android:layout_height="wrap_content">
         </fragment>
 
+        <fragment
+            android:id="@+id/fragmentalbum"
+            android:name='com.example.music_app.fragment.fragment_album'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </fragment>
+
     </LinearLayout>
 
 </ScrollView>
