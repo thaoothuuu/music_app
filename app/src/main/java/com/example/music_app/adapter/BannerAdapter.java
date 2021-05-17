@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.music_app.R;
+import com.example.music_app.activity.DanhsachbaihatActivity;
 import com.example.music_app.model.Quangcao;
 import com.squareup.picasso.Picasso;
 
@@ -60,7 +62,15 @@ public class BannerAdapter extends PagerAdapter {
         txtNoiDung.setText(arrayListBanner.get(position).getNoidung());
 
 
-        
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DanhsachbaihatActivity.class);
+                intent.putExtra("banner",arrayListBanner.get(position));
+                context.startActivity(intent);
+                //Toast.makeText(context, "da click", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         container.addView(view);
         return view;

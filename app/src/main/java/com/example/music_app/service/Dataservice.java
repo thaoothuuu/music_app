@@ -10,7 +10,10 @@ import com.example.music_app.model.TheLoaiTrongNgay;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface Dataservice {
     @GET("songbanner.php")
@@ -31,4 +34,8 @@ public interface Dataservice {
 
     @GET("baihatduocthich.php")
     Call<List<Baihat>> getbaihatyeuthich();
+
+    @FormUrlEncoded
+    @POST("danhsachbaihat.php")
+    Call<List<Baihat>> getDanhSachBaiHatTheoQuangCao(@Field("idquangcao") String idquangcao);
 }

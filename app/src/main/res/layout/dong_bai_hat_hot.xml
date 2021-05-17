@@ -13,7 +13,7 @@
     <TextView
         android:text="Ten Bai Hat"
         android:textSize="18sp"
-        android:textColor="#363636"
+        android:textColor="#8c8a8a"
         android:ellipsize="end"
         android:maxLines="1"
         android:layout_toRightOf="@id/imageviewbaihathot"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
-        android:textColor="#8c8a8a"
+        android:textColor="#363636"
         android:textSize="18sp"
         android:text="Ca si"
         android:singleLine="true"

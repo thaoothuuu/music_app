@@ -9,6 +9,7 @@ import com.example.music_app.R;
 import com.example.music_app.adapter.MainViewPagerAdapter;
 import com.example.music_app.fragment.fragment_Tim_kiem;
 import com.example.music_app.fragment.fragment_Trang_chu;
+import com.example.music_app.fragment.fragment_thu_vien;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
-        mainViewPagerAdapter.addFragment(new fragment_Trang_chu(),"Trang Chủ");
-        mainViewPagerAdapter.addFragment(new fragment_Tim_kiem(), "Tìm Kiếm");
+        mainViewPagerAdapter.addFragment(new fragment_Trang_chu(),"");
+        mainViewPagerAdapter.addFragment(new fragment_Tim_kiem(), "");
+        mainViewPagerAdapter.addFragment(new fragment_thu_vien(), "");
         viewPager.setAdapter(mainViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.iconhome);
         tabLayout.getTabAt(1).setIcon(R.drawable.icontim);
+        tabLayout.getTabAt(2).setIcon(R.drawable.iconthuvien);
     }
 
     private void anhxa() {
