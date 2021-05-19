@@ -53,6 +53,8 @@ public class fragment_playlist extends Fragment {
                 linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerViewplaylist.setLayoutManager(linearLayoutManager);
                 recyclerViewplaylist.setAdapter(playListAdapter);
+
+
             }
 
             @Override

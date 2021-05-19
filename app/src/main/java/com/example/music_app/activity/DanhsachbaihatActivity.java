@@ -3,6 +3,7 @@ package com.example.music_app.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -12,15 +13,19 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
-import com.example.music_app.R;
+import com.example.music_app.adapter.DanhsachbaihatAdapter;
+import com.example.music_app.model.Album;
 import com.example.music_app.model.Baihat;
+import com.example.music_app.model.Playlist;
 import com.example.music_app.model.Quangcao;
+//import com.example.music_app.model.TheLoai;
+import com.example.music_app.R;
 import com.example.music_app.service.APIService;
 import com.example.music_app.service.Dataservice;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -44,35 +49,64 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     RecyclerView recyclerViewDanhSachBaiHat;
     FloatingActionButton floatingActionButton;
     ImageView imgDanhSachCaKhuc;
-    ArrayList<Baihat> mangbaihat;
-    //DanhsachbaihatAdapter danhSachBaiHatAdapter;
-
+    ArrayList<Baihat> mangBaiHat;
+    DanhsachbaihatAdapter danhSachBaiHatAdapter;
     Quangcao quangCao;
+    Playlist playList;
+    //TheLoai theLoai;
+    Album album;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danhsachbaihat);
+
         DataIntent();
         anhxa();
         init();
-        if (quangCao != null && !quangCao.getTenBaiHat().equals("")){
-            setValueinview(quangCao.getTenBaiHat(),quangCao.getHinhBaiHat());
-            getDataquangcao(quangCao.getIdQuangcao());
+        if(quangCao != null && !quangCao.getTenBaiHat().equals("")){
+            setValueInView(quangCao.getTenBaiHat(),quangCao.getHinhBaiHat());
+            getDataQuangCao(quangCao.getIdQuangcao());
         }
 
 
 
     }
 
-    private void getDataquangcao(String idquangcao) {
-        Dataservice dataservice = APIService.getService();
-        Call<List<Baihat>> callback = dataservice.getDanhSachBaiHatTheoQuangCao(idquangcao);
-        callback.enqueue(new Callback<List<Baihat>>() {
+    private void setValueInView(String ten, String hinh) {
+        collapsingToolbarLayout.setTitle(ten);
+        try {
+            URL url = new URL(hinh);
+//            if (android.os.Build.VERSION.SDK_INT > 9) {
+//                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//                StrictMode.setThreadPolicy(policy);
+//            }
+            Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                collapsingToolbarLayout.setBackground(bitmapDrawable);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Picasso.with(this).load(hinh).into(imgDanhSachCaKhuc);
+    }
+
+
+
+    private void getDataQuangCao(String idQuangCao) {
+        Dataservice dataService = APIService.getService();
+        Call<List<Baihat>> callBack = dataService.getDanhSachBaiHatTheoQuangCao(idQuangCao);
+        callBack.enqueue(new Callback<List<Baihat>>() {
             @Override
             public void onResponse(Call<List<Baihat>> call, Response<List<Baihat>> response) {
-                mangbaihat = (ArrayList<Baihat>) response.body();
-                Log.d("bbb", mangbaihat.get(0).getTenBaiHat());
-
+                mangBaiHat = (ArrayList<Baihat>) response.body();
+                danhSachBaiHatAdapter = new DanhsachbaihatAdapter(DanhsachbaihatActivity.this, mangBaiHat);
+                recyclerViewDanhSachBaiHat.setLayoutManager(new LinearLayoutManager(DanhsachbaihatActivity.this));
+                recyclerViewDanhSachBaiHat.setAdapter(danhSachBaiHatAdapter);
+                eventClick();
             }
 
             @Override
@@ -82,22 +116,16 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
         });
     }
 
-    private void setValueinview(String ten , String hinh) {
-        collapsingToolbarLayout.setTitle(ten);
-        try {
-            URL url = new URL(hinh);
-            Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                collapsingToolbarLayout.setBackground(bitmapDrawable);
+    private void eventClick() {
+        floatingActionButton.setEnabled(true);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DanhsachbaihatActivity.this,PlayNhacActivity.class);
+                intent.putExtra("cacbaihat",mangBaiHat);
+                startActivity(intent);
             }
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Picasso.with(this).load(hinh).into(imgDanhSachCaKhuc);
+        });
     }
 
     private void init() {
@@ -111,7 +139,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
         });
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
-
+        floatingActionButton.setEnabled(false);
     }
 
     private void anhxa() {
@@ -123,14 +151,13 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
         imgDanhSachCaKhuc = findViewById(R.id.imageviewdanhsachcakhuc);
     }
 
-
     private void DataIntent() {
         Intent intent = getIntent();
         if(intent != null){
             if(intent.hasExtra("banner")){
                 quangCao = (Quangcao) intent.getSerializableExtra("banner");
-                Toast.makeText(this,quangCao.getTenBaiHat(),Toast.LENGTH_SHORT).show();
             }
+
 
         }
     }

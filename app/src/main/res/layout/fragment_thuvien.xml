@@ -15,9 +15,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="45dp"
-        android:text="Thư viện"
+        android:text="YOUR LIBRARY"
         android:textColor="#FFFEFE"
-        android:textSize="40sp"
+        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
