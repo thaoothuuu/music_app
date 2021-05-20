@@ -69,9 +69,14 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             getDataQuangCao(quangCao.getIdQuangcao());
         }
 
-
+        if(playList != null && !playList.getTen().equals("")){
+            setValueInView(playList.getTen(),playList.getHinhnen());
+            getDataPlayList(playList.getIdPlayList());
+        }
 
     }
+
+
 
     private void setValueInView(String ten, String hinh) {
         collapsingToolbarLayout.setTitle(ten);
@@ -99,6 +104,26 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     private void getDataQuangCao(String idQuangCao) {
         Dataservice dataService = APIService.getService();
         Call<List<Baihat>> callBack = dataService.getDanhSachBaiHatTheoQuangCao(idQuangCao);
+        callBack.enqueue(new Callback<List<Baihat>>() {
+            @Override
+            public void onResponse(Call<List<Baihat>> call, Response<List<Baihat>> response) {
+                mangBaiHat = (ArrayList<Baihat>) response.body();
+                danhSachBaiHatAdapter = new DanhsachbaihatAdapter(DanhsachbaihatActivity.this, mangBaiHat);
+                recyclerViewDanhSachBaiHat.setLayoutManager(new LinearLayoutManager(DanhsachbaihatActivity.this));
+                recyclerViewDanhSachBaiHat.setAdapter(danhSachBaiHatAdapter);
+                eventClick();
+            }
+
+            @Override
+            public void onFailure(Call<List<Baihat>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getDataPlayList(String idPlayList) {
+        Dataservice dataService = APIService.getService();
+        Call<List<Baihat>> callBack = dataService.getDanhSachBaiHatTheoPlayList(idPlayList);
         callBack.enqueue(new Callback<List<Baihat>>() {
             @Override
             public void onResponse(Call<List<Baihat>> call, Response<List<Baihat>> response) {
@@ -157,9 +182,11 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             if(intent.hasExtra("banner")){
                 quangCao = (Quangcao) intent.getSerializableExtra("banner");
             }
-
-
+            if (intent.hasExtra("itemplaylist")){
+                playList = (Playlist) intent.getSerializableExtra("itemplaylist");
+            }
         }
+
     }
 
 

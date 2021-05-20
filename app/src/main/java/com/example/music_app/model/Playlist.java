@@ -1,11 +1,16 @@
 package com.example.music_app.model;
 
 //import javax.annotation.Generated;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 //@Generated("jsonschema2pojo")
-public class Playlist {
+public class Playlist implements Serializable {
 
     @SerializedName("IdPlayList")
     @Expose
@@ -19,6 +24,8 @@ public class Playlist {
     @SerializedName("Hinhicon")
     @Expose
     private String hinhicon;
+
+
 
     public String getIdPlayList() {
         return idPlayList;
@@ -51,5 +58,6 @@ public class Playlist {
     public void setHinhicon(String hinhicon) {
         this.hinhicon = hinhicon;
     }
+
 
 }
