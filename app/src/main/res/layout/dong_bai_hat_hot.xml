@@ -34,13 +34,13 @@
         android:id="@+id/textviewtencasibaihathot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <ImageView
-        android:layout_marginRight="10dp"
-        android:src="@drawable/iconlove"
-        android:id="@+id/imageviewluotthich"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
+<!--    <ImageView-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:src="@drawable/iconlove"-->
+<!--        android:id="@+id/imageviewluotthich"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp" />-->
 
 </RelativeLayout>

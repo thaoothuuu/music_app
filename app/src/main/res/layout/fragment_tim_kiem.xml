@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:background="@drawable/bgrappbar"
-        android:id="@+id/appbarlayouttimkiem"
+        android:id="@+id/appbarlayoutsearchbaihat"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
@@ -17,23 +17,22 @@
         android:layout_height="55dp">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toilbartimkiem"
+            android:id="@+id/toolbarsearchbaihat"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:gravity="center_horizontal"
-            app:titleTextColor="#FFF"
-            app:title="Nghệ sĩ, bài hát, hoặc podcast"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:collapseIcon="?attr/actionModeCloseDrawable" />
+            app:collapseIcon="?attr/actionModeCloseDrawable"
+            app:title="Nghệ sĩ, bài hát, hoặc podcast"
+            app:titleTextColor="#FFF" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerviewtimkiem"
-        android:background="@drawable/bgrtimkiem"
+        android:id="@+id/recycleviewsearchbaihat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbarlayouttimkiem"
+        android:layout_below="@+id/appbarlayoutsearchbaihat"
         android:layout_marginTop="20dp" />
 
     <TextView
@@ -42,7 +41,7 @@
         android:gravity="center"
         android:text="Khônng tìm thấy bài hát này :("
         android:textSize="27sp"
-        android:id="@+id/textviewtimkiemnull"
+        android:id="@+id/textviewkhongcodulieu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
