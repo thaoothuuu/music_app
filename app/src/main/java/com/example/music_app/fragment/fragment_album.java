@@ -43,25 +43,5 @@ public class fragment_album extends Fragment {
         return view;
     }
 
-    private void GetData() {
-        Dataservice dataservice = APIService.getService();
-        Call<List<Album>> callback = dataservice.GetAlbum();
-        callback.enqueue(new Callback<List<Album>>() {
-            @Override
-            public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
-                ArrayList<Album> mangalbum = (ArrayList<Album>) response.body();
-                albumAdapter = new AlbumAdapter(getActivity(), mangalbum);
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-                recyclerViewalbum.setLayoutManager(linearLayoutManager);
-                recyclerViewalbum.setAdapter(albumAdapter);
-            }
 
-            @Override
-            public void onFailure(Call<List<Album>> call, Throwable t) {
-
-            }
-
-        });
-    }
 }
