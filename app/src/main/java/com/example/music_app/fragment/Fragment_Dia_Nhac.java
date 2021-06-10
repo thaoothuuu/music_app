@@ -25,7 +25,7 @@ public class Fragment_Dia_Nhac extends Fragment {
 
 
     @Nullable
-        @Override
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_dia_nhac,container,false);
         circleImageView = view.findViewById(R.id.imageviewcircle);
