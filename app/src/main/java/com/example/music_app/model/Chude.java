@@ -16,6 +16,29 @@ private String tenChuDe;
 @SerializedName("HinhChuDe")
 @Expose
 private String hinhChuDe;
+  public String getIdChuDe() {
+return idChuDe;
+}
+
+public void setIdChuDe(String idChuDe) {
+this.idChuDe = idChuDe;
+}
+
+public String getTenChuDe() {
+return tenChuDe;
+}
+
+public void setTenChuDe(String tenChuDe) {
+this.tenChuDe = tenChuDe;
+}
+
+public String getHinhChuDe() {
+return hinhChuDe;
+}
+
+public void setHinhChuDe(String hinhChuDe) {
+this.hinhChuDe = hinhChuDe;
+}
 
 
 
