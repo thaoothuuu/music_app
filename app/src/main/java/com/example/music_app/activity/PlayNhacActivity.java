@@ -404,4 +404,5 @@ public class PlayNhacActivity extends AppCompatActivity {
             }
         }, 1000);
     }
+    //commit delay
 }
